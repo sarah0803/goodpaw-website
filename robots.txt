@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://goodpaw.de/sitemap.xml
