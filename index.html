@@ -287,12 +287,15 @@ footer .draft{color:var(--gold);letter-spacing:.1em;text-transform:uppercase;fon
     <div>
       <h2 class="t">Das erste Probierpaket geht an die Liste.</h2>
       <p class="lead">Eine Mail, wenn es losgeht, und die Möglichkeit, mit deinem Hund zu testen. Keine Werbung dazwischen, kein Weitergeben der Adresse.</p>
-      <form id="waitForm">
-        <input id="email" type="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse" required>
+      <form id="waitForm" method="POST" action="https://2a97be85.sibforms.com/serve/MUIFAMp2HORmnSxJ7B8RUKcdG2_aoMWa_3pP4RNHsLIvQjTiM98hvTSXY_5Z6o1BMGB2j9yJi3jj2T8LYzkJcYo8VHN9KhCHxJoppZD7eBukQLJLeVkKjO5gR-sL2aw34B1bJckgPknEaS4qqRhvI8Crkgy6fGQ9okTxQEjSPAtKTq-5WjbOqkZAKb7QksIX3QIQ1nULr7VVKZds4Q==" novalidate>
+        <input id="email" type="email" name="EMAIL" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse" autocomplete="email" required>
+        <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <input type="hidden" name="locale" value="de">
+        <input type="hidden" name="html_type" value="simple">
         <button class="btn solid" type="submit">Eintragen</button>
       </form>
       <p class="ok" id="waitOk" hidden></p>
-      <p class="note">Entwurf: Die Liste ist noch nicht mit dem Shop verbunden. Bis dahin reicht eine Mail an <a href="mailto:hallo@goodpaw.de?subject=Warteliste">hallo@goodpaw.de</a>.</p>
+      <p class="note">Du bekommst eine Bestätigungsmail und bist erst nach dem Klick darauf eingetragen (Double-Opt-in). Abmelden geht jederzeit über den Link in jeder Mail. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>. Oder einfach per Mail an <a href="mailto:hallo@goodpaw.de?subject=Warteliste">hallo@goodpaw.de</a>.</p>
     </div>
   </div>
 </section>
@@ -309,9 +312,17 @@ footer .draft{color:var(--gold);letter-spacing:.1em;text-transform:uppercase;fon
 
 <script>
 (function(){
-  document.getElementById("waitForm").addEventListener("submit",function(e){
-    e.preventDefault();var m=document.getElementById("email").value.trim();var ok=document.getElementById("waitOk");
-    ok.textContent="Vorgemerkt: "+m+". Im Entwurf wird noch nichts gespeichert, bitte zusätzlich per Mail melden.";ok.hidden=false;
+  var f=document.getElementById("waitForm"),ok=document.getElementById("waitOk"),btn=f.querySelector("button");
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    var inp=document.getElementById("email"),m=inp.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)){ok.textContent="Bitte eine gültige E-Mail-Adresse eingeben.";ok.hidden=false;inp.focus();return;}
+    btn.disabled=true;
+    fetch(f.action+"?isAjax=1",{method:"POST",body:new FormData(f)}).then(function(r){return r.json();}).then(function(d){
+      if(d&&d.success){ok.textContent="Fast geschafft: Wir haben eine Mail an "+m+" geschickt. Bitte bestätige darin deine Adresse.";f.reset();}
+      else{ok.textContent=(d&&d.errors&&d.errors.EMAIL)||"Das hat nicht geklappt. Bitte prüfe die Adresse oder schreib uns an hallo@goodpaw.de.";btn.disabled=false;}
+      ok.hidden=false;
+    }).catch(function(){f.submit();});
   });
 })();
 </script>
