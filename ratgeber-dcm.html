@@ -81,6 +81,7 @@ nav.main a.wl{border:1px solid var(--terra);background:var(--terra);color:var(--
 /* Hero (Startseite) */
 .hero{background:linear-gradient(180deg,var(--green-deep),var(--green) 45%,var(--green))}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,72px);align-items:end;padding-block:clamp(40px,7vw,96px) 0}
+.hero .wrap>div:first-child{padding-bottom:clamp(48px,7vw,96px)}
 .hero .dogs{margin:0;align-self:end}
 .hero .dogs img{width:100%;height:auto;max-width:620px;margin-inline:auto;filter:drop-shadow(0 24px 30px rgba(0,0,0,.35))}
 .hero .dogs figcaption{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-align:center;padding:1rem 0 1.4rem}
@@ -90,7 +91,7 @@ nav.main a.wl{border:1px solid var(--terra);background:var(--terra);color:var(--
 .hero h1{font-size:clamp(2.8rem,7vw,5.6rem);letter-spacing:.12em;color:var(--gold-bright);margin-top:.6rem;font-weight:400;line-height:1}
 .hero .motto{font-family:var(--display);font-size:clamp(1.5rem,2.8vw,2.1rem);color:var(--cream);margin-top:1.2rem;font-weight:400}
 .hero .sub,.pagehead .sub{margin-top:1.4rem;max-width:50ch;font-size:1.05rem;color:var(--cream)}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-bottom:0}.hero .dogs img{max-width:440px}.hero .dogs{margin-top:1rem}}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-bottom:0}.hero .wrap>div:first-child{padding-bottom:1.5rem}.hero .dogs img{max-width:440px}.hero .dogs{margin-top:1rem}}
 
 /* Seitenkopf (Unterseiten): schmaler dunkelgrüner Streifen mit Titel */
 .pagehead{background:linear-gradient(180deg,var(--green-deep),var(--green));color:var(--cream)}
