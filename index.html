@@ -80,14 +80,17 @@ nav.main a.wl{border:1px solid var(--terra);background:var(--terra);color:var(--
 
 /* Hero (Startseite) */
 .hero{background:linear-gradient(180deg,var(--green-deep),var(--green) 45%,var(--green))}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,68ch);gap:clamp(24px,5vw,80px);align-items:center;padding-block:clamp(48px,8vw,120px)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,72px);align-items:end;padding-block:clamp(40px,7vw,96px) 0}
+.hero .dogs{margin:0;align-self:end}
+.hero .dogs img{width:100%;height:auto;max-width:620px;margin-inline:auto;filter:drop-shadow(0 24px 30px rgba(0,0,0,.35))}
+.hero .dogs figcaption{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-align:center;padding:1rem 0 1.4rem}
 .hero .wrap>*{min-width:0}
 .hero .mark{width:min(120px,28vw);margin-bottom:2rem}
 .hero .kicker,.pagehead .kicker{font-size:.88rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:500}
 .hero h1{font-size:clamp(2.8rem,7vw,5.6rem);letter-spacing:.12em;color:var(--gold-bright);margin-top:.6rem;font-weight:400;line-height:1}
 .hero .motto{font-family:var(--display);font-size:clamp(1.5rem,2.8vw,2.1rem);color:var(--cream);margin-top:1.2rem;font-weight:400}
 .hero .sub,.pagehead .sub{margin-top:1.4rem;max-width:50ch;font-size:1.05rem;color:var(--cream)}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-bottom:0}.hero .dogs img{max-width:440px}.hero .dogs{margin-top:1rem}}
 
 /* Seitenkopf (Unterseiten): schmaler dunkelgrüner Streifen mit Titel */
 .pagehead{background:linear-gradient(180deg,var(--green-deep),var(--green));color:var(--cream)}
@@ -249,6 +252,10 @@ footer .draft{color:var(--gold);letter-spacing:.1em;text-transform:uppercase;fon
       <p class="sub">Gebackenes Trockenfutter aus Knollen, Vollkorn und Saaten. Ohne Erbsen, ohne Soja, ohne Lupine. Jede Charge im Labor geprüft, die Analyse steht online.</p>
       <div class="cta"><a class="btn solid" href="#warteliste">Auf die Warteliste</a><a class="btn" href="futter.html">Was drin ist</a></div>
     </div>
+    <figure class="dogs">
+      <img src="assets/hunde.webp" alt="Zwei Hunde sitzen nebeneinander und schauen in die Kamera, ein braun-weißer und ein weißer" width="1233" height="800">
+      <figcaption>Die Chef-Tester. Jede Rezeptur geht erst durch ihren Napf.</figcaption>
+    </figure>
   </div>
 </section>
 
